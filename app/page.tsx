@@ -1,8 +1,15 @@
 'use client'
+import { ChangeEvent } from 'react'
 import { useList } from './hooks/useList'
+import { useState } from 'react'
 
 export default function Home() {
   const list = useList((state) => state.items)
+  const [newItem, setNewItem] = useState('')
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewItem(e.target.value)
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -11,6 +18,23 @@ export default function Home() {
           Market &#127822; &#127818; &#129382;
         </h1>
 
+        <div className="flex-col">
+          <form>
+            <label htmlFor="itemInput">What do we need from the market?</label>
+            <input
+              type="text"
+              id="itemInput"
+              onChange={handleChange}
+              value={newItem}
+            />
+            <button
+              className="border-solid border-2 border-gray-400 rounded-lg
+           mb-4"
+            >
+              add to list
+            </button>
+          </form>
+        </div>
         <ul className="text-md opacity-70">
           {list.map((item) => (
             <li
