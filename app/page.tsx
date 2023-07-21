@@ -7,9 +7,19 @@ export default function Home() {
   const list = useList((state) => state.items)
   const [newItem, setNewItem] = useState('')
 
+  console.log(list)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewItem(e.target.value)
   }
+
+  // function Controls() {
+  //   const increasePopulation = useStore((state) => state.increasePopulation)
+  //   return <button onClick={increasePopulation}>one up</button>
+  // }
+
+  // const handleAdd = (e: React.FormEvent, newItem) => {
+  //   list.(newItem)
+  // }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -19,7 +29,9 @@ export default function Home() {
         </h1>
 
         <div className="flex-col">
-          <form>
+          <form
+          // onSubmit={handleAdd}
+          >
             <label htmlFor="itemInput">What do we need from the market?</label>
             <input
               type="text"
@@ -28,6 +40,7 @@ export default function Home() {
               value={newItem}
             />
             <button
+              type="submit"
               className="border-solid border-2 border-gray-400 rounded-lg
            mb-4"
             >

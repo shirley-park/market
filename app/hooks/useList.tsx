@@ -28,4 +28,5 @@ const mockData = [
 
 export const useList = create<listState>((set) => ({
   items: [...mockData],
+  addItem: (item: Item) => set((state) => ({ items: [...state.items, item] })),
 }))
